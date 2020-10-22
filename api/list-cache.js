@@ -5,6 +5,16 @@ const redisClient = redis.createClient(
 )
 
 module.exports = async (req, res) => {
+  const params = query(req)
+
+  if (
+    process.env.GET_AUTH_TOKEN &&
+    process.env.GET_AUTH_TOKEN !== params.token
+  ) {
+    micro.send(res, 401, "you do not have auth header")
+    return
+  }
+
   const allKeys = await new Promise((resolve) => {
     redisClient.keys("*", (err, keys) => {
       if (err) {

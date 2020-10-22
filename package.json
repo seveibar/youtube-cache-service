@@ -9,11 +9,14 @@
     "start:prod": "micro app.js"
   },
   "dependencies": {
+    "ava": "^3.13.0",
+    "axios": "^0.20.0",
     "micro": "^9.3.4",
     "micro-dev": "^3.0.0",
     "micro-query": "^0.3.0",
     "redis": "^3.0.2",
     "rimraf": "^3.0.2",
+    "test-listen": "^1.1.0",
     "tmp": "^0.2.1",
     "ytdl-core": "^3.4.1"
   }

@@ -15,6 +15,14 @@ const redisClient = redis.createClient(
 module.exports = async (req, res) => {
   const params = query(req)
 
+  if (process.env.GET_AUTH_TOKEN) {
+    if (process.env.GET_AUTH_TOKEN !== params.token) {
+      micro.send(res, 401, "you do not have auth header")
+    } else if (!params.token) {
+      micro.send(res, 401, "you need to supply auth token")
+    }
+  }
+
   if (!params.video_url) {
     micro.send(res, 400, 'You forgot the "video_url", you idiot!')
     return

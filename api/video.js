@@ -16,6 +16,14 @@ module.exports = async (req, res) => {
   const params = query(req)
   const qualityLabel = params.quality || "480p"
 
+  if (
+    process.env.GET_AUTH_TOKEN &&
+    process.env.GET_AUTH_TOKEN !== params.token
+  ) {
+    micro.send(res, 401, "you do not have auth header")
+    return
+  }
+
   if (!params.video_url) {
     micro.send(res, 400, 'You forgot the "video_url", you idiot!')
     return
