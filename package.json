@@ -1,0 +1,20 @@
+{
+  "name": "youtube-cache-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "seveibar <seveibar@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "micro-dev app.js",
+    "start:prod": "micro app.js"
+  },
+  "dependencies": {
+    "micro": "^9.3.4",
+    "micro-dev": "^3.0.0",
+    "micro-query": "^0.3.0",
+    "redis": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "tmp": "^0.2.1",
+    "ytdl-core": "^3.4.1"
+  }
+}
